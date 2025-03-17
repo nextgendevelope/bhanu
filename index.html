@@ -63,4 +63,43 @@
             0% { transform: translateY(100vh); opacity: 0.8; }
             100% { transform: translateY(-10vh); opacity: 0; }
         }
-  
+    </style>
+</head>
+<body>
+
+    <h1>🎉 Happy Birthday Bhanu! 🎂</h1>
+    <div class="cake">🎂🎂🎂</div>
+    <p class="message">Wishing you a day filled with love, laughter, and joy! 🎈</p>
+
+    <!-- Autoplay Birthday Song -->
+    <audio autoplay loop>
+        <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Fireworks effect
+        function createFirework() {
+            let firework = document.createElement("div");
+            firework.classList.add("firework");
+            document.body.appendChild(firework);
+            firework.style.left = Math.random() * 100 + "vw";
+            firework.style.top = Math.random() * 100 + "vh";
+            setTimeout(() => { firework.remove(); }, 1000);
+        }
+        setInterval(createFirework, 500);
+
+        // Floating balloons effect
+        function createBalloon() {
+            let balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+            document.body.appendChild(balloon);
+            balloon.style.left = Math.random() * 100 + "vw";
+            balloon.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            balloon.style.animationDuration = Math.random() * 3 + 4 + "s";
+            setTimeout(() => { balloon.remove(); }, 5000);
+        }
+        setInterval(createBalloon, 700);
+    </script>
+
+</body>
+</html>
