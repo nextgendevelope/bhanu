@@ -24,19 +24,19 @@
             background-color: black;
         }
 
-        /* Photo Section */
+        /* Full Photo Section */
         .photo-container {
             width: 100%;
-            height: 50vh;
+            height: 100vh;
             background: url('your-image.jpg') no-repeat center center;
-            background-size: cover;
-            border-bottom: 5px solid gold;
+            background-size: contain;
+            background-color: black;
         }
 
-        /* Text & Cake Section - Now Colorful */
+        /* Text & Cake Section */
         .content {
             width: 100%;
-            height: 50vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -140,11 +140,11 @@
         /* Responsive Fixes */
         @media (max-width: 768px) {
             .photo-container {
-                height: 45vh;
+                height: 100vh;
             }
 
             .content {
-                height: 55vh;
+                height: 100vh;
             }
 
             h1 {
@@ -159,7 +159,7 @@
 </head>
 <body>
 
-    <!-- Bhanu's Photo at the Top -->
+    <!-- Full Bhanu's Photo -->
     <div class="photo-container"></div>
 
     <!-- Birthday Message and Cake -->
@@ -178,9 +178,9 @@
     <!-- Fireworks & Balloons -->
     <div class="fireworks" id="fireworks"></div>
 
-    <!-- 🎶 Long Happy Birthday Song -->
+    <!-- 🎶 New Happy Birthday Song -->
     <audio id="music">
-        <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+        <source src="https://www.fesliyanstudios.com/play-mp3/2" type="audio/mpeg">
     </audio>
 
     <script>
