@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bhanu 🎉</title>
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px white; }
+            100% { text-shadow: 0 0 20px yellow; }
+        }
+        .cake {
+            font-size: 100px;
+            margin: 30px 0;
+        }
+        button {
+            padding: 15px;
+            font-size: 18px;
+            background: #ff007f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        button:hover {
+            background: #ff0055;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎉 Happy Birthday Bhanu! 🎂</h1>
+    <div class="cake">🎂🎂🎂</div>
+    <p>Wishing you a day filled with happiness and a year filled with joy! 🎈</p>
+    <button onclick="playMusic()">🎶 Play Birthday Song 🎶</button>
+    
+    <audio id="song" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <script>
+        function playMusic() {
+            document.getElementById('song').play();
+            alert("Enjoy your birthday Bhanu! 🎊");
+        }
+    </script>
+
+</body>
+</html>
