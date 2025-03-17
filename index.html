@@ -24,14 +24,44 @@
             100% { text-shadow: 0 0 20px yellow; }
         }
 
-        .cake {
-            font-size: 100px;
-            margin: 30px 0;
+        /* Cake and candle */
+        .cake-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 50px;
+            cursor: pointer;
         }
 
-        .message {
-            font-size: 1.5rem;
-            margin-top: 20px;
+        .cake {
+            font-size: 100px;
+        }
+
+        .candle {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 40px;
+            background: red;
+            border-radius: 5px;
+        }
+
+        .flame {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 20px;
+            background: orange;
+            border-radius: 50%;
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { background: yellow; transform: scale(1); }
+            100% { background: orange; transform: scale(1.2); }
         }
 
         /* Fireworks animation */
@@ -49,56 +79,80 @@
             100% { transform: scale(4); opacity: 0; }
         }
 
-        /* Balloons animation */
-        .balloon {
+        /* Smoke effect when candle blows out */
+        .smoke {
             position: absolute;
-            width: 50px;
-            height: 70px;
-            background: red;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 20px;
+            background: gray;
+            opacity: 0.8;
             border-radius: 50%;
-            animation: float 5s infinite ease-in-out;
+            animation: rise 2s forwards;
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh); opacity: 0.8; }
-            100% { transform: translateY(-10vh); opacity: 0; }
+        @keyframes rise {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-50px); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
     <h1>🎉 Happy Birthday Bhanu! 🎂</h1>
-    <div class="cake">🎂🎂🎂</div>
-    <p class="message">Wishing you a day filled with love, laughter, and joy! 🎈</p>
+    <p>Tap the cake for a surprise! 🎶🎆</p>
 
-    <!-- Autoplay Birthday Song -->
-    <audio autoplay loop>
+    <div class="cake-container" onclick="startCelebration()">
+        <div class="candle" id="candle">
+            <div class="flame" id="flame"></div>
+        </div>
+        <div class="cake">🎂</div>
+    </div>
+
+    <!-- Birthday Song (Hidden Initially) -->
+    <audio id="music">
         <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
     </audio>
 
     <script>
-        // Fireworks effect
-        function createFirework() {
-            let firework = document.createElement("div");
-            firework.classList.add("firework");
-            document.body.appendChild(firework);
-            firework.style.left = Math.random() * 100 + "vw";
-            firework.style.top = Math.random() * 100 + "vh";
-            setTimeout(() => { firework.remove(); }, 1000);
-        }
-        setInterval(createFirework, 500);
+        function startCelebration() {
+            let flame = document.getElementById("flame");
+            let candle = document.getElementById("candle");
+            let music = document.getElementById("music");
 
-        // Floating balloons effect
-        function createBalloon() {
-            let balloon = document.createElement("div");
-            balloon.classList.add("balloon");
-            document.body.appendChild(balloon);
-            balloon.style.left = Math.random() * 100 + "vw";
-            balloon.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            balloon.style.animationDuration = Math.random() * 3 + 4 + "s";
-            setTimeout(() => { balloon.remove(); }, 5000);
+            // Remove flame (blow out effect)
+            flame.style.display = "none";
+
+            // Show smoke effect
+            let smoke = document.createElement("div");
+            smoke.classList.add("smoke");
+            candle.appendChild(smoke);
+
+            // Play birthday music
+            music.play();
+
+            // Fireworks start after 1 second
+            setTimeout(() => {
+                createFireworks();
+            }, 1000);
         }
-        setInterval(createBalloon, 700);
+
+        // Fireworks effect
+        function createFireworks() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    let firework = document.createElement("div");
+                    firework.classList.add("firework");
+                    document.body.appendChild(firework);
+                    firework.style.left = Math.random() * 100 + "vw";
+                    firework.style.top = Math.random() * 100 + "vh";
+                    firework.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    setTimeout(() => { firework.remove(); }, 1000);
+                }, i * 200);
+            }
+        }
     </script>
 
 </body>
