@@ -96,6 +96,24 @@
             100% { background: orange; transform: scale(1.2); }
         }
 
+        /* Smoke effect after blowing candle */
+        .smoke {
+            width: 10px;
+            height: 40px;
+            background: gray;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: rise 2s forwards;
+        }
+
+        @keyframes rise {
+            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-40px); }
+        }
+
         /* Responsive Fixes */
         @media (max-width: 768px) {
             .photo-container {
