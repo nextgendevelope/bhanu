@@ -5,31 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎂 Happy Birthday Bhanu! 🎉</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             text-align: center;
-            background: url('6251404588607456775.jpg') no-repeat center top;
+            background: url('your-image.jpg') no-repeat center top;
             background-size: cover;
             font-family: 'Arial', sans-serif;
             color: white;
             overflow: hidden;
             border: 10px solid gold;
-            padding: 20px;
-            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: flex-end; /* Moves content to lower half */
             height: 100vh;
+            padding-bottom: 5vh; /* Space at the bottom */
         }
 
         .content {
             background: rgba(0, 0, 0, 0.6); /* Slight background for visibility */
             padding: 20px;
             border-radius: 20px;
-            margin-bottom: 20px;
+            width: 90%;
+            max-width: 500px;
+            margin: auto;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             animation: glow 2s infinite alternate;
         }
 
@@ -38,11 +45,11 @@
             100% { text-shadow: 0 0 20px yellow; }
         }
 
-        /* Cake and candle */
         .cake-container {
             position: relative;
             display: inline-block;
             cursor: pointer;
+            margin-top: 20px;
         }
 
         .cake {
@@ -77,68 +84,25 @@
             100% { background: orange; transform: scale(1.2); }
         }
 
-        /* Fireworks */
-        .firework {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: yellow;
-            border-radius: 50%;
-            animation: explode 1.5s forwards;
-        }
+        /* Responsive: Ensuring text & cake are in the lower half */
+        @media (max-width: 768px) {
+            body {
+                justify-content: flex-end; /* Pushes content to bottom */
+                padding-bottom: 10vh;
+            }
 
-        @keyframes explode {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(5); opacity: 0; }
-        }
+            .content {
+                width: 95%;
+                font-size: 1rem;
+            }
 
-        /* Smoke effect when candle blows out */
-        .smoke {
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 10px;
-            height: 20px;
-            background: gray;
-            opacity: 0.8;
-            border-radius: 50%;
-            animation: rise 2s forwards;
-        }
+            h1 {
+                font-size: 2rem;
+            }
 
-        @keyframes rise {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-50px); opacity: 0; }
-        }
-
-        /* Balloons */
-        .balloon {
-            position: absolute;
-            width: 50px;
-            height: 70px;
-            background: red;
-            border-radius: 50%;
-            animation: float 5s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh); opacity: 0.8; }
-            100% { transform: translateY(-10vh); opacity: 0; }
-        }
-
-        /* Confetti */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: yellow;
-            border-radius: 50%;
-            animation: fall 3s forwards;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+            .cake {
+                font-size: 80px;
+            }
         }
     </style>
 </head>
@@ -177,60 +141,9 @@
 
             // Play birthday music 🎶
             music.play();
-
-            // Fireworks, Balloons & Confetti start after 1 second
-            setTimeout(() => {
-                createFireworks();
-                createBalloons();
-                createConfetti();
-            }, 1000);
-        }
-
-        // Fireworks effect
-        function createFireworks() {
-            for (let i = 0; i < 30; i++) {  
-                setTimeout(() => {
-                    let firework = document.createElement("div");
-                    firework.classList.add("firework");
-                    document.body.appendChild(firework);
-                    firework.style.left = Math.random() * 100 + "vw";
-                    firework.style.top = Math.random() * 100 + "vh";
-                    firework.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                    setTimeout(() => { firework.remove(); }, 1500);
-                }, i * 100);
-            }
-        }
-
-        // Floating Balloons
-        function createBalloons() {
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    let balloon = document.createElement("div");
-                    balloon.classList.add("balloon");
-                    document.body.appendChild(balloon);
-                    balloon.style.left = Math.random() * 100 + "vw";
-                    balloon.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                    balloon.style.animationDuration = Math.random() * 3 + 4 + "s";
-                    setTimeout(() => { balloon.remove(); }, 5000);
-                }, i * 500);
-            }
-        }
-
-        // Confetti Effect
-        function createConfetti() {
-            for (let i = 0; i < 40; i++) {
-                setTimeout(() => {
-                    let confetti = document.createElement("div");
-                    confetti.classList.add("confetti");
-                    document.body.appendChild(confetti);
-                    confetti.style.left = Math.random() * 100 + "vw";
-                    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                    confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
-                    setTimeout(() => { confetti.remove(); }, 3000);
-                }, i * 100);
-            }
         }
     </script>
 
 </body>
 </html>
+
