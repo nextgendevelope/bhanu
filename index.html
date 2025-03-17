@@ -7,7 +7,7 @@
     <style>
         body {
             text-align: center;
-            background: url('6251404588607456775.jpg') no-repeat center center fixed;
+            background: url('your-image.jpg') no-repeat center top;
             background-size: cover;
             font-family: 'Arial', sans-serif;
             color: white;
@@ -15,11 +15,21 @@
             border: 10px solid gold;
             padding: 20px;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Moves content to lower half */
+            height: 100vh;
+        }
+
+        .content {
+            background: rgba(0, 0, 0, 0.6); /* Slight background for visibility */
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
         }
 
         h1 {
             font-size: 3rem;
-            margin-top: 50px;
             animation: glow 2s infinite alternate;
         }
 
@@ -32,7 +42,6 @@
         .cake-container {
             position: relative;
             display: inline-block;
-            margin-top: 50px;
             cursor: pointer;
         }
 
@@ -135,19 +144,21 @@
 </head>
 <body>
 
-    <h1>🎉 Happy Birthday Bhanu! 🎂</h1>
-    <p>Tap the cake for a surprise! 🎶🎆🎈</p>
+    <div class="content">
+        <h1>🎉 Happy Birthday Bhanu! 🎂</h1>
+        <p>Tap the cake for a surprise! 🎶🎆🎈</p>
 
-    <div class="cake-container" onclick="startCelebration()">
-        <div class="candle" id="candle">
-            <div class="flame" id="flame"></div>
+        <div class="cake-container" onclick="startCelebration()">
+            <div class="candle" id="candle">
+                <div class="flame" id="flame"></div>
+            </div>
+            <div class="cake">🎂</div>
         </div>
-        <div class="cake">🎂</div>
     </div>
 
     <!-- Birthday Song -->
     <audio id="music">
-        <source src="https://www.myinstants.com/media/sounds/happy-birthday-song.mp3" type="audio/mpeg">
+        <source src="https://www.myinstants.com/media/sounds/happy-birthday-to-you.mp3" type="audio/mpeg">
     </audio>
 
     <script>
