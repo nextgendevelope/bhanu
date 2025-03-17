@@ -67,16 +67,16 @@
         /* Fireworks animation */
         .firework {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 15px;
+            height: 15px;
             background: yellow;
             border-radius: 50%;
-            animation: explode 1s infinite;
+            animation: explode 1.5s forwards;
         }
 
         @keyframes explode {
             0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(4); opacity: 0; }
+            100% { transform: scale(5); opacity: 0; }
         }
 
         /* Smoke effect when candle blows out */
@@ -97,12 +97,42 @@
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(-50px); opacity: 0; }
         }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 0.8; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: yellow;
+            border-radius: 50%;
+            animation: fall 3s forwards;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
     <h1>🎉 Happy Birthday Bhanu! 🎂</h1>
-    <p>Tap the cake for a surprise! 🎶🎆</p>
+    <p>Tap the cake for a surprise! 🎶🎆🎈</p>
 
     <div class="cake-container" onclick="startCelebration()">
         <div class="candle" id="candle">
@@ -133,15 +163,17 @@
             // Play birthday music
             music.play();
 
-            // Fireworks start after 1 second
+            // Fireworks, Balloons & Confetti start after 1 second
             setTimeout(() => {
                 createFireworks();
+                createBalloons();
+                createConfetti();
             }, 1000);
         }
 
         // Fireworks effect
         function createFireworks() {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 20; i++) {  // Increased fireworks
                 setTimeout(() => {
                     let firework = document.createElement("div");
                     firework.classList.add("firework");
@@ -149,8 +181,38 @@
                     firework.style.left = Math.random() * 100 + "vw";
                     firework.style.top = Math.random() * 100 + "vh";
                     firework.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                    setTimeout(() => { firework.remove(); }, 1000);
-                }, i * 200);
+                    setTimeout(() => { firework.remove(); }, 1500);
+                }, i * 100);
+            }
+        }
+
+        // Floating Balloons
+        function createBalloons() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    let balloon = document.createElement("div");
+                    balloon.classList.add("balloon");
+                    document.body.appendChild(balloon);
+                    balloon.style.left = Math.random() * 100 + "vw";
+                    balloon.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    balloon.style.animationDuration = Math.random() * 3 + 4 + "s";
+                    setTimeout(() => { balloon.remove(); }, 5000);
+                }, i * 500);
+            }
+        }
+
+        // Confetti Effect
+        function createConfetti() {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    let confetti = document.createElement("div");
+                    confetti.classList.add("confetti");
+                    document.body.appendChild(confetti);
+                    confetti.style.left = Math.random() * 100 + "vw";
+                    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+                    setTimeout(() => { confetti.remove(); }, 3000);
+                }, i * 100);
             }
         }
     </script>
