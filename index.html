@@ -3,56 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Bhanu 🎉</title>
+    <title>🎂 Happy Birthday Bhanu! 🎉</title>
     <style>
         body {
             text-align: center;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: 'Arial', sans-serif;
             color: white;
+            overflow: hidden;
         }
+
         h1 {
             font-size: 3rem;
             margin-top: 50px;
             animation: glow 2s infinite alternate;
         }
+
         @keyframes glow {
             0% { text-shadow: 0 0 10px white; }
             100% { text-shadow: 0 0 20px yellow; }
         }
+
         .cake {
             font-size: 100px;
             margin: 30px 0;
         }
-        button {
-            padding: 15px;
-            font-size: 18px;
-            background: #ff007f;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        button:hover {
-            background: #ff0055;
-        }
-    </style>
-</head>
-<body>
 
-    <h1>🎉 Happy Birthday Bhanu! 🎂</h1>
-    <div class="cake">🎂🎂🎂</div>
-    <p>Wishing you a day filled with happiness and a year filled with joy! 🎈</p>
-    <button onclick="playMusic()">🎶 Play Birthday Song 🎶</button>
-    
-    <audio id="song" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-
-    <script>
-        function playMusic() {
-            document.getElementById('song').play();
-            alert("Enjoy your birthday Bhanu! 🎊");
+        .message {
+            font-size: 1.5rem;
+            margin-top: 20px;
         }
-    </script>
 
-</body>
-</html>
+        /* Fireworks animation */
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: yellow;
+            border-radius: 50%;
+            animation: explode 1s infinite;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+
+        /* Balloons animation */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 0.8; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+  
