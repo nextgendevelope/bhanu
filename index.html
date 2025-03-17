@@ -13,26 +13,34 @@
 
         body {
             text-align: center;
-            background: url('6251404588607456775.jpg') no-repeat center top;
-            background-size: cover;
             font-family: 'Arial', sans-serif;
             color: white;
             overflow: hidden;
             border: 10px solid gold;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end; /* Moves content to lower half */
+            align-items: center;
             height: 100vh;
-            padding-bottom: 5vh; /* Space at the bottom */
+            background-color: black;
         }
 
+        /* Photo section */
+        .photo-container {
+            width: 100%;
+            height: 40vh; /* Adjust height */
+            background: url('your-image.jpg') no-repeat center top;
+            background-size: cover;
+            border-bottom: 5px solid gold;
+        }
+
+        /* Content section */
         .content {
-            background: rgba(0, 0, 0, 0.6); /* Slight background for visibility */
-            padding: 20px;
-            border-radius: 20px;
             width: 90%;
             max-width: 500px;
-            margin: auto;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: auto; /* Pushes content to the bottom */
         }
 
         h1 {
@@ -45,6 +53,7 @@
             100% { text-shadow: 0 0 20px yellow; }
         }
 
+        /* Cake */
         .cake-container {
             position: relative;
             display: inline-block;
@@ -84,16 +93,14 @@
             100% { background: orange; transform: scale(1.2); }
         }
 
-        /* Responsive: Ensuring text & cake are in the lower half */
+        /* Responsive Fixes */
         @media (max-width: 768px) {
-            body {
-                justify-content: flex-end; /* Pushes content to bottom */
-                padding-bottom: 10vh;
+            .photo-container {
+                height: 35vh;
             }
 
             .content {
                 width: 95%;
-                font-size: 1rem;
             }
 
             h1 {
@@ -108,6 +115,10 @@
 </head>
 <body>
 
+    <!-- Bhanu's Photo at the Top -->
+    <div class="photo-container"></div>
+
+    <!-- Birthday Message and Cake -->
     <div class="content">
         <h1>🎉 Happy Birthday Bhanu! 🎂</h1>
         <p>Tap the cake for a surprise! 🎶🎆🎈</p>
@@ -120,9 +131,9 @@
         </div>
     </div>
 
-    <!-- Birthday Song -->
+    <!-- 🎶 Long Happy Birthday Song -->
     <audio id="music">
-        <source src="https://www.myinstants.com/media/sounds/happy-birthday-to-you.mp3" type="audio/mpeg">
+        <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
     </audio>
 
     <script>
@@ -146,4 +157,3 @@
 
 </body>
 </html>
-
