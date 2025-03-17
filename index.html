@@ -16,7 +16,6 @@
             font-family: 'Arial', sans-serif;
             color: white;
             overflow: hidden;
-            border: 10px solid gold;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -24,62 +23,37 @@
             background-color: black;
         }
 
-        /* Full-Photo with More Upper Part Visible */
+        /* Full-Photo (Properly Aligned) */
         .photo-container {
             width: 100%;
-            height: 75vh; /* More of the upper photo is visible */
+            height: 65vh; /* Adjusted for better text alignment */
             background: url('your-image.jpg') no-repeat center top;
             background-size: cover;
             position: relative;
         }
 
-        /* Fireworks (Crackers) on Sides */
-        .firework {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: url('firework.gif') no-repeat center center;
-            background-size: contain;
-            animation: blink 0.8s infinite alternate;
-        }
-
-        .firework-left {
-            top: 10%;
-            left: 2%;
-        }
-
-        .firework-right {
-            top: 10%;
-            right: 2%;
-        }
-
-        @keyframes blink {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0.5; transform: scale(1.3); }
-        }
-
         /* Text & Cake Section */
         .content {
             width: 100%;
-            height: 25vh;
+            height: 35vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
-            animation: bgColor 5s infinite alternate;
             color: black;
             padding: 20px;
-        }
-
-        @keyframes bgColor {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
         }
 
         h1 {
             font-size: 2.5rem;
             text-shadow: 2px 2px 10px white;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
         }
 
         /* Cake */
@@ -122,34 +96,22 @@
             100% { background: orange; transform: scale(1.2); }
         }
 
-        /* Balloons */
-        .balloon {
-            position: absolute;
-            bottom: -50px;
-            width: 40px;
-            height: 60px;
-            background: red;
-            border-radius: 50%;
-            animation: floatUp 4s linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% { bottom: -50px; opacity: 0; }
-            100% { bottom: 100vh; opacity: 1; }
-        }
-
         /* Responsive Fixes */
         @media (max-width: 768px) {
             .photo-container {
-                height: 75vh;
+                height: 60vh;
             }
 
             .content {
-                height: 25vh;
+                height: 40vh;
             }
 
             h1 {
                 font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
             }
 
             .cake {
@@ -160,16 +122,13 @@
 </head>
 <body>
 
-    <!-- Full Bhanu's Photo with More Upper Part Visible -->
-    <div class="photo-container">
-        <img src="firework.gif" class="firework firework-left">
-        <img src="firework.gif" class="firework firework-right">
-    </div>
+    <!-- Full Bhanu's Photo (Properly Aligned) -->
+    <div class="photo-container"></div>
 
     <!-- Birthday Message and Cake -->
     <div class="content">
         <h1>🎉 Happy Birthday Bhanu! 🎂</h1>
-        <p>Tap the cake for a surprise! 🎶🎆🎈</p>
+        <p>Tap the cake for a surprise! 🎶🎈</p>
 
         <div class="cake-container" onclick="startCelebration()">
             <div class="candle" id="candle">
@@ -179,9 +138,9 @@
         </div>
     </div>
 
-    <!-- 🎶 Fixed Happy Birthday Song (Only Plays on Cake Click) -->
+    <!-- 🎶 New Working Happy Birthday Song -->
     <audio id="music">
-        <source src="https://audio.jukehost.co.uk/NEW_HAPPY_BIRTHDAY.mp3" type="audio/mpeg">
+        <source src="https://audio.jukehost.co.uk/HBD_SONG.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -200,19 +159,6 @@
 
             // Play birthday music 🎶
             music.play();
-
-            // Balloons 🎈
-            for (let i = 0; i < 5; i++) {
-                let balloon = document.createElement("div");
-                balloon.classList.add("balloon");
-                balloon.style.left = `${Math.random() * 100}%`;
-                balloon.style.background = ["red", "blue", "green", "yellow", "pink"][Math.floor(Math.random() * 5)];
-                document.body.appendChild(balloon);
-
-                setTimeout(() => {
-                    balloon.remove();
-                }, 4000);
-            }
         }
     </script>
 
