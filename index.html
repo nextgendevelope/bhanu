@@ -24,34 +24,37 @@
             background-color: black;
         }
 
-        /* Photo section */
+        /* Photo Section */
         .photo-container {
             width: 100%;
-            height: 60vh; /* 60% of the screen */
-            background: url('your-image.jpg') no-repeat center top;
+            height: 50vh;
+            background: url('your-image.jpg') no-repeat center center;
             background-size: cover;
             border-bottom: 5px solid gold;
-            position: relative;
         }
 
-        /* Content section (1/4 of the photo height) */
+        /* Text & Cake Section - Now Colorful */
         .content {
-            width: 90%;
-            max-width: 500px;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            border-radius: 20px;
-            margin-top: -15vh; /* Moves it up to 1/4th of photo */
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            animation: bgColor 5s infinite alternate;
+            color: black;
+            padding: 20px;
+        }
+
+        @keyframes bgColor {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
         h1 {
-            font-size: 2rem;
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px white; }
-            100% { text-shadow: 0 0 20px yellow; }
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 10px white;
         }
 
         /* Cake */
@@ -94,19 +97,58 @@
             100% { background: orange; transform: scale(1.2); }
         }
 
+        /* Fireworks */
+        .fireworks {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: yellow;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(5); opacity: 0; }
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            bottom: -50px;
+            width: 40px;
+            height: 60px;
+            background: red;
+            border-radius: 50%;
+            animation: floatUp 4s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { bottom: -50px; opacity: 0; }
+            100% { bottom: 100vh; opacity: 1; }
+        }
+
         /* Responsive Fixes */
         @media (max-width: 768px) {
             .photo-container {
-                height: 55vh;
+                height: 45vh;
             }
 
             .content {
-                width: 95%;
-                margin-top: -13vh;
+                height: 55vh;
             }
 
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .cake {
@@ -133,6 +175,9 @@
         </div>
     </div>
 
+    <!-- Fireworks & Balloons -->
+    <div class="fireworks" id="fireworks"></div>
+
     <!-- 🎶 Long Happy Birthday Song -->
     <audio id="music">
         <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
@@ -143,6 +188,7 @@
             let flame = document.getElementById("flame");
             let candle = document.getElementById("candle");
             let music = document.getElementById("music");
+            let fireworks = document.getElementById("fireworks");
 
             // Remove flame (blow out effect)
             if (flame) flame.style.display = "none";
@@ -154,6 +200,33 @@
 
             // Play birthday music 🎶
             music.play();
+
+            // Fireworks 🎆
+            for (let i = 0; i < 10; i++) {
+                let firework = document.createElement("div");
+                firework.classList.add("firework");
+                firework.style.top = `${Math.random() * 100}%`;
+                firework.style.left = `${Math.random() * 100}%`;
+                firework.style.background = ["red", "yellow", "blue", "green", "purple"][Math.floor(Math.random() * 5)];
+                fireworks.appendChild(firework);
+
+                setTimeout(() => {
+                    firework.remove();
+                }, 1000);
+            }
+
+            // Balloons 🎈
+            for (let i = 0; i < 5; i++) {
+                let balloon = document.createElement("div");
+                balloon.classList.add("balloon");
+                balloon.style.left = `${Math.random() * 100}%`;
+                balloon.style.background = ["red", "blue", "green", "yellow", "pink"][Math.floor(Math.random() * 5)];
+                document.body.appendChild(balloon);
+
+                setTimeout(() => {
+                    balloon.remove();
+                }, 4000);
+            }
         }
     </script>
 
