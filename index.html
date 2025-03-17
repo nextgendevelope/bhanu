@@ -64,7 +64,7 @@
             100% { background: orange; transform: scale(1.2); }
         }
 
-        /* Fireworks animation */
+        /* Fireworks */
         .firework {
             position: absolute;
             width: 15px;
@@ -97,6 +97,36 @@
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(-50px); opacity: 0; }
         }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 0.8; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: yellow;
+            border-radius: 50%;
+            animation: fall 3s forwards;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -113,7 +143,7 @@
 
     <!-- Birthday Song -->
     <audio id="music">
-        <source src="https://www.myinstants.com/media/sounds/happy-birthday-song.mp3" type="audio/mpeg">
+        <source src="https://www.myinstants.com/media/sounds/happy-birthday-to-you.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -132,8 +162,36 @@
 
             // Play birthday music 🎶
             music.play();
-        }
-    </script>
 
-</body>
-</html>
+            // Fireworks, Balloons & Confetti start after 1 second
+            setTimeout(() => {
+                createFireworks();
+                createBalloons();
+                createConfetti();
+            }, 1000);
+        }
+
+        // Fireworks effect
+        function createFireworks() {
+            for (let i = 0; i < 30; i++) {  // More fireworks
+                setTimeout(() => {
+                    let firework = document.createElement("div");
+                    firework.classList.add("firework");
+                    document.body.appendChild(firework);
+                    firework.style.left = Math.random() * 100 + "vw";
+                    firework.style.top = Math.random() * 100 + "vh";
+                    firework.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    setTimeout(() => { firework.remove(); }, 1500);
+                }, i * 100);
+            }
+        }
+
+        // Floating Balloons
+        function createBalloons() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    let balloon = document.createElement("div");
+                    balloon.classList.add("balloon");
+                    document.body.appendChild(balloon);
+                    balloon.style.left = Math.random() * 100 + "vw";
+                    balloon.style.background = `h
